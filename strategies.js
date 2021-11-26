@@ -41,7 +41,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
   const newDeployment = definitions.deployment({
     name: `${name}-${version}`,
     image,
-    envFrom,
+    envFrom: envFrom && definitions.envFrom({ envFrom }),
     port,
     replicas,
   });
