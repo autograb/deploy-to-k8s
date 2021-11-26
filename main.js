@@ -20,7 +20,7 @@ const fields = {
   replicas: core.getInput('replicas'),
 };
 
-(async () => {
+async function main() {
   const definition = definitions[fields.type];
 
   if (!definition) {
@@ -36,4 +36,10 @@ const fields = {
   }
 
   return strategies({ strategy, ...fields });
-})();
+}
+
+try {
+  main();
+} catch (e) {
+  process.exit(1);
+}

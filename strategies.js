@@ -16,7 +16,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
     existingDeployment = await new Promise(async (resolve, reject) => {
       let out = '';
       let err = '';
-      await exec(`kubectl get service ${name} -o json`, {
+      await exec('kubectl', ['get', 'service', name, '-o', 'json'], {
         silent: true,
         listeners: {
           stdout: (data) => {
@@ -48,7 +48,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
 
   // Create new deployment
   console.log(`🚀 Creating new deployment ${name}-${version}`);
-  await exec(`kubectl apply -f -`, {
+  await exec('kubectl', ['apply', '-f', '-'], {
     input: yaml.stringify(newDeployment),
   });
   console.log(`🔃 Submitted deployment ${name}-${version}`);
@@ -67,7 +67,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
   });
 
   console.log(`🚀 Creating healthcheck service for ${name}-${version}`);
-  await exec(`kubectl apply -f -`, {
+  await exec('kubectl', ['apply', '-f', '-'], {
     input: yaml.stringify(healthCheckService),
   });
   console.log(`🔃 Submitted healthcheck service for ${name}-${version}`);
@@ -92,7 +92,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
     version,
     targetPort,
   });
-  await exec(`kubectl apply -f -`, {
+  await exec('kubectl', ['apply', '-f', '-'], {
     input: yaml.stringify(service),
   });
   console.log(`🔃 Submitted traffic switch ${name}-${version}`);
@@ -108,7 +108,7 @@ async function blueGreen({ name, version, envFrom, image, port, replicas }) {
     if (existingDeployment) {
       await exec(`kubectl delete deployment ${name}-${version}`);
       console.log(`🔃 Switching traffic back to existing service`);
-      await exec(`kubectl apply -f -`, {
+      await exec('kubectl', ['apply', '-f', '-'], {
         input: yaml.stringify(JSON.parse(existingDeployment)),
       });
     }
