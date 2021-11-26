@@ -20,6 +20,8 @@ inputs:
     description: 'Command to run for job or cron deployments'
   port:
     description: 'Port to target for web deployments'
+  envFrom:
+    description: 'Secret to generate the environment from'
 runs:
   using: 'node12'
   main: 'dist/main.js'
