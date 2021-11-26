@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $NAME
+  labels:
+    app: $SELECTOR_NAME
+    version: $SELECTOR_VERSION
+spec:
+  replicas: $REPLICAS
+  selector:
+    matchLabels:
+      app: $SELECTOR_NAME
+      version: $SELECTOR_VERSION
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: $SELECTOR_NAME
+        version: $SELECTOR_VERSION
+    spec:
+      containers:
+        - name: $NAME
+          image: $IMAGE
+          envFrom:
+            - secretRef:
+                name: $SECRET_REF
+          ports:
+            - containerPort: $PORT
+          resources:
+            requests:
+              memory: '512Mi'
+              cpu: '500m'
+            limits:
+              memory: '2048Mi'
+              cpu: '1000m'

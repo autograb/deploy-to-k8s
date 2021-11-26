@@ -1,0 +1,27 @@
+name: 'Deploy to Kubernetes'
+description: 'Deploying to AutoGrab kubernetes environment.'
+author: 'Will Hackett <will@autograb.com.au>'
+branding:
+  icon: 'cloud-lightning'
+  color: 'blue'
+inputs:
+  name:
+    description: 'Name of the serivce to be deployed'
+    required: true
+  type:
+    description: 'Type of deployment - job, cronjob, web or worker'
+    required: true
+  image:
+    description: 'Docker image to use'
+    required: true
+  schedule:
+    description: 'Crontab schedule for cron deployments'
+  command:
+    description: 'Command to run for job or cron deployments'
+  restartPolicy:
+    description: 'Restart policy, only used for job or cron'
+  port:
+    description: 'Port to target for web deployments'
+runs:
+  using: 'node16'
+  main: 'deploy.js'

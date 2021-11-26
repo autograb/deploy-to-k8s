@@ -1,0 +1,21 @@
+{
+  "name": "deploy-to-k8s",
+  "version": "1.0.0",
+  "main": "deploy.js",
+  "repository": "git@github.com:autograb/deploy-to-k8s.git",
+  "author": "Will Hackett <will@autograb.com.au>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "package": "ncc build main.js -o dist"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/exec": "^1.1.0",
+    "@kubernetes/client-node": "^0.16.1",
+    "axios": "^0.24.0"
+  }
+}
