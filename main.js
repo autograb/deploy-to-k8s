@@ -35,5 +35,5 @@ const fields = {
     }
   }
 
-  return strategies(strategy, fields);
+  return strategies({ strategy, ...fields });
 })();
