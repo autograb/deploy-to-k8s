@@ -22,4 +22,4 @@ inputs:
     description: 'Port to target for web deployments'
 runs:
   using: 'node16'
-  main: 'deploy.js'
+  main: 'dist/main.js'
