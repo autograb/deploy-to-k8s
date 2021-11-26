@@ -1,4 +1,4 @@
-name: 'Deploy to Kubernetes'
+name: '[AG Internal] Deploy to Kubernetes'
 description: 'Deploying to AutoGrab kubernetes environment.'
 author: 'Will Hackett <will@autograb.com.au>'
 branding:
