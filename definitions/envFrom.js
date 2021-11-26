@@ -1,4 +1,4 @@
-module.exports = function ({ secretRef }) {
+module.exports = function envFrom({ secretRef }) {
   return [
     {
       secretRef: {
