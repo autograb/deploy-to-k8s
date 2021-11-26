@@ -26,4 +26,4 @@ inputs:
     description: 'Target minimum replicas for deployments'
 runs:
   using: 'node12'
-  main: 'dist/main.js'
+  main: 'dist/index.js'
