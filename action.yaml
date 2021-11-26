@@ -22,6 +22,8 @@ inputs:
     description: 'Port to target for web deployments'
   envFrom:
     description: 'Secret to generate the environment from'
+  replicas:
+    description: 'Target minimum replicas for deployments'
 runs:
   using: 'node12'
   main: 'dist/main.js'

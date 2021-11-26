@@ -16,6 +16,8 @@ const fields = {
   schedule: core.getInput('schedule'),
   command: core.getInput('command'),
   port: core.getInput('port'),
+  envFrom: core.getInput('envFrom'),
+  replicas: core.getInput('replicas'),
 };
 
 (async () => {
