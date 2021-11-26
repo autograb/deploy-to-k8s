@@ -1,8 +1,15 @@
+const { execSync } = require('child_process');
 const core = require('@actions/core');
 const definitions = require('./definitions');
 const strategies = require('./strategies');
 
+const gitCommitId = execSync('git rev-parse HEAD')
+  .toString()
+  .trim()
+  .slice(0, 10);
+
 const fields = {
+  version: gitCommitId,
   name: core.getInput('name'),
   type: core.getInput('type'),
   image: core.getInput('image'),

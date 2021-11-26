@@ -15,7 +15,7 @@
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.0",
-    "@kubernetes/client-node": "^0.16.1",
-    "axios": "^0.24.0"
+    "axios": "^0.24.0",
+    "json2yaml": "^1.1.0"
   }
 }

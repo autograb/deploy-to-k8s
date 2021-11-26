@@ -18,8 +18,6 @@ inputs:
     description: 'Crontab schedule for cron deployments'
   command:
     description: 'Command to run for job or cron deployments'
-  restartPolicy:
-    description: 'Restart policy, only used for job or cron'
   port:
     description: 'Port to target for web deployments'
 runs:
